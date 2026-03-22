@@ -38,6 +38,12 @@ body {
   cursor: default;
 }
 
+/* Lock scroll until Enter Experience is clicked */
+body.locked {
+  overflow: hidden !important;
+  height: 100vh;
+}
+
 ::selection {
   background: var(--accent);
   color: var(--bg);
@@ -1079,17 +1085,18 @@ body {
 }
 
 .project-nav-btn {
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid var(--border);
-  color: var(--text2);
+  background: rgba(255,255,255,0.06);
+  border: 2px solid rgba(255,255,255,0.12);
+  color: var(--text);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .project-nav-btn:hover {
@@ -1512,26 +1519,64 @@ body {
 
 /* --- Responsive --- */
 @media (max-width: 768px) {
-  .h-panel { padding: 40px 24px; }
-  .panel-about-intro { flex-direction: column; gap: 40px; }
-  .photo-frame { width: 240px; height: 300px; }
-  .timeline { flex-direction: column; gap: 32px; }
+  /* Give about section more scroll room for 5 panels on mobile */
+  .scene-about { height: 600vh; }
+
+  .h-panel {
+    padding: 80px 24px 60px;
+    flex-direction: column;
+    gap: 32px;
+    justify-content: flex-start;
+    padding-top: 100px;
+  }
+  .panel-about-intro {
+    flex-direction: column;
+    gap: 32px;
+    justify-content: center;
+    padding-top: 80px;
+  }
+  .photo-frame { width: 200px; height: 250px; }
+
+  .about-big-text { font-size: 1.3rem; }
+  .about-sub-text { font-size: 0.85rem; }
+
+  .timeline { flex-direction: column; gap: 24px; }
   .timeline::before { display: none; }
-  .values-grid { flex-direction: column; align-items: center; }
-  .philosophy-pillars { flex-direction: column; }
-  .skills-orbit { transform: scale(0.65) !important; }
-  .testimonials-float { flex-direction: column; align-items: center; }
-  .test-card { width: 90vw; }
+  .timeline-item { text-align: left; }
+  .tl-year { font-size: 1.8rem; margin-bottom: 8px; }
+  .tl-content p { max-width: 100%; }
+
+  .philosophy-title { font-size: 1.8rem; }
+  .philosophy-quote { font-size: 1rem; margin-bottom: 32px; }
+  .philosophy-pillars { flex-direction: column; gap: 16px; }
+  .pillar { padding: 20px; }
+
+  .values-grid { flex-direction: column; align-items: center; gap: 16px; }
+  .value-card { width: 85vw; padding: 28px 20px; }
+
+  .skills-orbit { transform: scale(0.55) !important; }
+  .scene-title { font-size: 1.8rem; margin-bottom: 20px; }
+
+  .testimonials-float { flex-direction: column; align-items: center; gap: 20px; }
+  .test-card { width: 88vw; padding: 28px 20px; }
+
   .progress-track { display: none; }
   .scene-chapter { left: 24px; top: 24px; }
 
+  /* Chapter title mobile */
+  .chapter-title { font-size: clamp(3rem, 12vw, 5rem); }
+
   /* Project carousel mobile */
   .project-slide.active { flex-direction: column; }
-  .project-slide-image { min-height: 200px; flex: none; }
-  .project-slide-meta { flex-direction: column; gap: 12px; }
+  .project-slide-image { min-height: 180px; flex: none; }
+  .project-slide-info { gap: 12px; }
+  .project-slide-info h3 { font-size: 1.4rem; }
+  .project-slide-info > p { font-size: 0.85rem; }
+  .project-slide-meta { flex-direction: column; gap: 8px; }
   .project-slide-actions { flex-direction: column; }
   .btn-project { text-align: center; justify-content: center; }
-  .project-showcase { width: 100%; }
+  .project-showcase { width: 100%; padding: 0 16px; }
+  .project-nav { margin-top: 24px; }
 
   /* Code modal mobile */
   .code-modal-content { width: 95vw; max-height: 85vh; }
@@ -1543,16 +1588,30 @@ body {
     right: 10px;
     left: 10px;
     width: auto;
-    transform: translateY(-50%) translateX(40px);
+    top: auto;
+    bottom: 20px;
+    transform: translateY(40px);
   }
   .skill-detail.visible {
-    transform: translateY(-50%) translateX(0);
+    transform: translateY(0);
   }
 
   /* Contact mobile */
+  .contact-title { font-size: 2rem; }
   .contact-links { gap: 12px; }
   .cl-label { width: 60px; font-size: 0.6rem; }
-  .cl-value { font-size: 0.85rem; }
+  .cl-value { font-size: 0.8rem; }
+
+  /* Intro mobile */
+  .intro-logo { font-size: 2rem; }
+  .intro-tagline { font-size: 0.85rem; margin-bottom: 36px; }
+
+  /* Hero mobile */
+  .hero-title { font-size: clamp(2.5rem, 12vw, 5rem); }
+  .floating-code { display: none; }
+
+  /* Sound toggle mobile */
+  .sound-toggle { top: 16px; right: 16px; width: 40px; height: 40px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -200,11 +200,16 @@
   const startBtn = document.getElementById('startBtn');
   let started = false;
 
+  // Lock scroll until Enter Experience is clicked
+  document.body.classList.add('locked');
+  window.scrollTo(0, 0);
+
   startBtn.addEventListener('click', () => {
     audio.init();
     audio.toggle(); // unmute
     audio.playChord([261.63, 329.63, 392.00, 523.25], 1, 0.05);
     introOverlay.classList.add('hidden');
+    document.body.classList.remove('locked');
     started = true;
     document.getElementById('soundToggle').classList.remove('muted');
     startTyping();
@@ -417,6 +422,27 @@
   projectDots.forEach((dot, i) => {
     dot.addEventListener('click', () => showProject(i));
   });
+
+  // Swipe support for mobile project navigation
+  let touchStartX = 0;
+  let touchEndX = 0;
+  const projectCarousel = document.querySelector('.project-carousel');
+  if (projectCarousel) {
+    projectCarousel.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    projectCarousel.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) {
+          showProject((currentProject + 1) % projectSlides.length);
+        } else {
+          showProject((currentProject - 1 + projectSlides.length) % projectSlides.length);
+        }
+      }
+    }, { passive: true });
+  }
 
   // --- Testimonials float ---
   function updateTestimonials() {
