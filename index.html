@@ -1,528 +1,485 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DEV.STORY — An Interactive Journey</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Abdulrhman Alboshra | AI &amp; Web Developer</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800;900&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="style.css" rel="stylesheet"/>
+<meta content="Sudan-based AI and web developer. Explore BOQ, Dof3a, and bilingual learning websites. Available for remote part-time work, 20-25 hours per week." name="description"/></head>
 <body>
-  <!-- Sound Toggle -->
-  <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">
-    <svg class="sound-on" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"/></svg>
-    <svg class="sound-off" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
-  </button>
-
-  <!-- Scroll Progress -->
-  <div class="progress-track">
-    <div class="progress-fill" id="progressFill"></div>
-    <div class="progress-chapters">
-      <div class="progress-dot active" data-scene="0"></div>
-      <div class="progress-dot" data-scene="1"></div>
-      <div class="progress-dot" data-scene="2"></div>
-      <div class="progress-dot" data-scene="3"></div>
-      <div class="progress-dot" data-scene="4"></div>
-      <div class="progress-dot" data-scene="5"></div>
-    </div>
-  </div>
-
-  <!-- Canvas for 3D particles -->
-  <canvas id="bgCanvas"></canvas>
-
-  <!-- ========== SCENE 0: INTRO / LOADING ========== -->
-  <section class="scene scene-intro" id="scene0" data-scene="0">
-    <div class="intro-overlay" id="introOverlay">
-      <div class="intro-content">
-        <div class="intro-logo">
-          <span class="intro-bracket">&lt;</span>
-          <span class="intro-text">DEV</span>
-          <span class="intro-dot">.</span>
-          <span class="intro-text">STORY</span>
-          <span class="intro-bracket">/&gt;</span>
-        </div>
-        <p class="intro-tagline">An Interactive Journey</p>
-        <button class="intro-start" id="startBtn">
-          <span>Enter Experience</span>
-          <div class="intro-start-ring"></div>
-        </button>
-        <p class="intro-hint">Best with sound on</p>
-      </div>
-    </div>
-
-    <!-- Hero parallax layers -->
-    <div class="parallax-container" id="heroParallax">
-      <div class="parallax-layer" data-speed="-0.3" data-rotate="0.02">
-        <div class="floating-shape shape-1"></div>
-      </div>
-      <div class="parallax-layer" data-speed="-0.2" data-rotate="-0.015">
-        <div class="floating-shape shape-2"></div>
-      </div>
-      <div class="parallax-layer" data-speed="-0.1">
-        <div class="floating-shape shape-3"></div>
-      </div>
-      <div class="parallax-layer" data-speed="0.05">
-        <div class="floating-shape shape-4"></div>
-      </div>
-      <div class="parallax-layer" data-speed="-0.15" data-rotate="0.01">
-        <div class="floating-shape shape-5"></div>
-      </div>
-      <div class="parallax-layer hero-text-layer" data-speed="0">
-        <div class="hero-content">
-          <div class="hero-overline">
-            <div class="typing-line" id="typingLine"></div>
-          </div>
-          <h1 class="hero-title">
-            <span class="hero-word" data-parallax-x="0.05">I</span>
-            <span class="hero-word" data-parallax-x="-0.03">Build</span>
-            <br>
-            <span class="hero-word hero-gradient" data-parallax-x="0.04">Digital</span>
-            <br>
-            <span class="hero-word hero-gradient" data-parallax-x="-0.06">Experiences</span>
-          </h1>
-        </div>
-      </div>
-      <div class="parallax-layer" data-speed="0.15">
-        <div class="floating-shape shape-6"></div>
-      </div>
-      <div class="parallax-layer" data-speed="0.2">
-        <div class="floating-code code-1">
-          <pre>&lt;div class="magic"&gt;</pre>
-        </div>
-      </div>
-      <div class="parallax-layer" data-speed="-0.25">
-        <div class="floating-code code-2">
-          <pre>const future = await build();</pre>
-        </div>
-      </div>
-      <div class="parallax-layer" data-speed="0.1">
-        <div class="floating-code code-3">
-          <pre>transform: rotateY(45deg);</pre>
-        </div>
-      </div>
-    </div>
-    <div class="scroll-cue">
-      <div class="scroll-cue-mouse">
-        <div class="scroll-cue-wheel"></div>
-      </div>
-      <span>Scroll to explore</span>
-    </div>
-  </section>
-
-  <!-- ========== SCENE 1: ABOUT — Horizontal reveal ========== -->
-  <section class="scene scene-about" id="scene1" data-scene="1" style="height:500vh">
-    <div class="scene-sticky">
-      <div class="horizontal-track" id="aboutTrack">
-        <!-- Panel 1: Chapter intro -->
-        <div class="h-panel panel-chapter">
-          <div class="chapter-number">
-            <span class="ch-num">01</span>
-            <span class="ch-line"></span>
-          </div>
-          <h2 class="chapter-title">The<br><span class="text-glow">Story</span></h2>
-        </div>
-        <!-- Panel 2: Photo + intro text -->
-        <div class="h-panel panel-about-intro">
-          <div class="about-photo-3d">
-            <div class="photo-frame" id="photoFrame">
-              <img src="https://images.unsplash.com/photo-1549692520-acc6669e2f0c?w=500&h=600&fit=crop&crop=face" alt="Developer" class="about-photo">
-              <div class="photo-glare"></div>
-            </div>
-          </div>
-          <div class="about-intro-text">
-            <p class="about-big-text">I'm a full-stack developer who turns <span class="text-glow">complex problems</span> into elegant, performant solutions.</p>
-            <p class="about-sub-text">Based in the digital world, shipping globally. I believe code is a craft and every pixel matters.</p>
-          </div>
-        </div>
-        <!-- Panel 3: Journey timeline -->
-        <div class="h-panel panel-timeline">
-          <div class="timeline">
-            <div class="timeline-item" data-year="2019">
-              <div class="tl-year">2019</div>
-              <div class="tl-content">
-                <h4>First Line of Code</h4>
-                <p>Discovered the magic of making things appear on screen. Built my first website with HTML and CSS.</p>
-              </div>
-            </div>
-            <div class="timeline-item" data-year="2021">
-              <div class="tl-year">2021</div>
-              <div class="tl-content">
-                <h4>Went Full-Stack</h4>
-                <p>Mastered React, Node.js, and databases. Started freelancing and building real products.</p>
-              </div>
-            </div>
-            <div class="timeline-item" data-year="2023">
-              <div class="tl-year">2023</div>
-              <div class="tl-content">
-                <h4>Led Major Projects</h4>
-                <p>Shipped products used by thousands. Led engineering teams and architected complex systems.</p>
-              </div>
-            </div>
-            <div class="timeline-item" data-year="2026">
-              <div class="tl-year">2026</div>
-              <div class="tl-content">
-                <h4>Building the Future</h4>
-                <p>Exploring AI, WebGL, and the next frontier of interactive web experiences.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Panel 5: Philosophy -->
-        <div class="h-panel panel-philosophy">
-          <div class="philosophy-content">
-            <h3 class="philosophy-title">My <span class="text-glow">Philosophy</span></h3>
-            <blockquote class="philosophy-quote">"Write code that humans can read, not just machines."</blockquote>
-            <div class="philosophy-pillars">
-              <div class="pillar">
-                <div class="pillar-num">01</div>
-                <h4>Clean Architecture</h4>
-                <p>Maintainable, testable, and scalable systems that stand the test of time.</p>
-              </div>
-              <div class="pillar">
-                <div class="pillar-num">02</div>
-                <h4>User-First Design</h4>
-                <p>Every interface should feel intuitive. If a user needs a manual, I've failed.</p>
-              </div>
-              <div class="pillar">
-                <div class="pillar-num">03</div>
-                <h4>Continuous Learning</h4>
-                <p>The tech landscape evolves daily. Staying curious is not optional, it's essential.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Panel 6: Values -->
-        <div class="h-panel panel-values">
-          <div class="values-grid">
-            <div class="value-card" data-tilt data-sound="fast">
-              <div class="value-icon">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-              </div>
-              <h4>Fast</h4>
-              <p>Sub-second load times, optimized to the bone</p>
-            </div>
-            <div class="value-card" data-tilt data-sound="secure">
-              <div class="value-icon">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              </div>
-              <h4>Secure</h4>
-              <p>Security-first architecture, always</p>
-            </div>
-            <div class="value-card" data-tilt data-sound="human">
-              <div class="value-icon">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
-              </div>
-              <h4>Human</h4>
-              <p>Interfaces that feel natural and delightful</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== SCENE 2: SKILLS — 3D rotating cube faces ========== -->
-  <section class="scene scene-skills" id="scene2" data-scene="2">
-    <div class="scene-sticky">
-      <div class="chapter-number scene-chapter">
-        <span class="ch-num">02</span>
-        <span class="ch-line"></span>
-      </div>
-      <h2 class="scene-title">The <span class="text-glow">Arsenal</span></h2>
-      <div class="skills-orbit" id="skillsOrbit">
-        <div class="orbit-center">
-          <div class="orbit-core">
-            <span class="orbit-label" id="orbitLabel">SKILLS</span>
-          </div>
-        </div>
-        <div class="orbit-ring ring-1">
-          <div class="orbit-item" data-skill="React" style="--angle: 0deg">
-            <div class="orbit-node">
-              <span>React</span>
-            </div>
-          </div>
-          <div class="orbit-item" data-skill="Node.js" style="--angle: 60deg">
-            <div class="orbit-node">
-              <span>Node.js</span>
-            </div>
-          </div>
-          <div class="orbit-item" data-skill="TypeScript" style="--angle: 120deg">
-            <div class="orbit-node">
-              <span>TypeScript</span>
-            </div>
-          </div>
-          <div class="orbit-item" data-skill="Python" style="--angle: 180deg">
-            <div class="orbit-node">
-              <span>Python</span>
-            </div>
-          </div>
-          <div class="orbit-item" data-skill="Next.js" style="--angle: 240deg">
-            <div class="orbit-node">
-              <span>Next.js</span>
-            </div>
-          </div>
-          <div class="orbit-item" data-skill="Go" style="--angle: 300deg">
-            <div class="orbit-node">
-              <span>Go</span>
-            </div>
-          </div>
-        </div>
-        <div class="orbit-ring ring-2">
-          <div class="orbit-item" data-skill="PostgreSQL" style="--angle: 30deg">
-            <div class="orbit-node node-sm">
-              <span>SQL</span>
-            </div>
-          </div>
-          <div class="orbit-item" data-skill="Docker" style="--angle: 90deg">
-            <div class="orbit-node node-sm">
-              <span>Docker</span>
-            </div>
-          </div>
-          <div class="orbit-item" data-skill="AWS" style="--angle: 150deg">
-            <div class="orbit-node node-sm">
-              <span>AWS</span>
-            </div>
-          </div>
-          <div class="orbit-item" data-skill="GraphQL" style="--angle: 210deg">
-            <div class="orbit-node node-sm">
-              <span>GraphQL</span>
-            </div>
-          </div>
-          <div class="orbit-item" data-skill="Redis" style="--angle: 270deg">
-            <div class="orbit-node node-sm">
-              <span>Redis</span>
-            </div>
-          </div>
-          <div class="orbit-item" data-skill="Tailwind" style="--angle: 330deg">
-            <div class="orbit-node node-sm">
-              <span>Tailwind</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Skill detail panel -->
-      <div class="skill-detail" id="skillDetail">
-        <button class="skill-detail-close" id="skillDetailClose" aria-label="Close">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-        </button>
-        <div class="skill-detail-inner">
-          <h3 class="skill-detail-name" id="skillDetailName">React</h3>
-          <div class="skill-detail-bar"><div class="skill-detail-fill" id="skillDetailFill"></div></div>
-          <p class="skill-detail-desc" id="skillDetailDesc"></p>
-          <div class="skill-detail-projects" id="skillDetailProjects"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== SCENE 3: PROJECTS — Immersive cards ========== -->
-  <section class="scene scene-projects" id="scene3" data-scene="3">
-    <div class="scene-sticky">
-      <div class="chapter-number scene-chapter">
-        <span class="ch-num">03</span>
-        <span class="ch-line"></span>
-      </div>
-      <h2 class="scene-title">The <span class="text-glow">Work</span></h2>
-      <!-- Project Showcase - one at a time -->
-      <div class="project-showcase" id="projectShowcase">
-        <div class="project-counter">
-          <span id="projectCurrent">01</span> / <span>03</span>
-        </div>
-        <div class="project-carousel">
-          <div class="project-slide active" data-index="0">
-            <div class="project-slide-image">
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&h=500&fit=crop" alt="Analytics Dashboard">
-            </div>
-            <div class="project-slide-info">
-              <div class="project-slide-tags">
-                <span>React</span><span>D3.js</span><span>Node.js</span>
-              </div>
-              <h3>Analytics Dashboard</h3>
-              <p>Real-time data visualization platform with interactive charts, custom reporting engine, and team collaboration features. Built for a SaaS company processing 2M+ events daily.</p>
-              <div class="project-slide-meta">
-                <div class="meta-item"><strong>Role:</strong> Lead Developer</div>
-                <div class="meta-item"><strong>Duration:</strong> 4 months</div>
-                <div class="meta-item"><strong>Impact:</strong> 60% faster insights</div>
-              </div>
-              <div class="project-slide-actions">
-                <a href="#" class="btn-project">View Live <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
-                <a href="#" class="btn-project btn-project-ghost">Source Code</a>
-              </div>
-            </div>
-          </div>
-          <div class="project-slide" data-index="1">
-            <div class="project-slide-image">
-              <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=900&h=500&fit=crop" alt="E-Commerce">
-            </div>
-            <div class="project-slide-info">
-              <div class="project-slide-tags">
-                <span>Next.js</span><span>Stripe</span><span>PostgreSQL</span>
-              </div>
-              <h3>E-Commerce Platform</h3>
-              <p>Full-featured online store with Stripe payment processing, real-time inventory management, order tracking, and an admin dashboard. Handles 10k+ orders per month.</p>
-              <div class="project-slide-meta">
-                <div class="meta-item"><strong>Role:</strong> Full-Stack Dev</div>
-                <div class="meta-item"><strong>Duration:</strong> 6 months</div>
-                <div class="meta-item"><strong>Impact:</strong> $2M+ in sales</div>
-              </div>
-              <div class="project-slide-actions">
-                <a href="#" class="btn-project">View Live <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
-                <a href="#" class="btn-project btn-project-ghost">Source Code</a>
-              </div>
-            </div>
-          </div>
-          <div class="project-slide" data-index="2">
-            <div class="project-slide-image">
-              <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=900&h=500&fit=crop" alt="AI Platform">
-            </div>
-            <div class="project-slide-info">
-              <div class="project-slide-tags">
-                <span>Python</span><span>OpenAI</span><span>FastAPI</span>
-              </div>
-              <h3>AI Content Generator</h3>
-              <p>AI-powered platform that generates marketing copy, blog posts, and social media content. Features brand voice customization, A/B testing, and multi-language support.</p>
-              <div class="project-slide-meta">
-                <div class="meta-item"><strong>Role:</strong> AI Engineer</div>
-                <div class="meta-item"><strong>Duration:</strong> 3 months</div>
-                <div class="meta-item"><strong>Impact:</strong> 10x content speed</div>
-              </div>
-              <div class="project-slide-actions">
-                <a href="#" class="btn-project">View Live <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
-                <a href="#" class="btn-project btn-project-ghost">Source Code</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="project-nav">
-          <button class="project-nav-btn" id="projPrev" aria-label="Previous">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-          </button>
-          <div class="project-dots" id="projectDots">
-            <span class="proj-dot active"></span>
-            <span class="proj-dot"></span>
-            <span class="proj-dot"></span>
-          </div>
-          <button class="project-nav-btn" id="projNext" aria-label="Next">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== SCENE 4: TESTIMONIALS — Floating cards ========== -->
-  <section class="scene scene-testimonials" id="scene4" data-scene="4">
-    <div class="scene-sticky">
-      <div class="chapter-number scene-chapter">
-        <span class="ch-num">04</span>
-        <span class="ch-line"></span>
-      </div>
-      <h2 class="scene-title">The <span class="text-glow">Voices</span></h2>
-      <div class="testimonials-float" id="testimonialsFloat">
-        <div class="test-card" data-float-speed="0.8" data-float-offset="0">
-          <div class="test-quote-mark">"</div>
-          <p>Exceptional work on our platform redesign. The attention to detail exceeded all expectations.</p>
-          <div class="test-author">
-            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="">
-            <div>
-              <strong>James Mitchell</strong>
-              <span>CTO, TechVenture</span>
-            </div>
-          </div>
-        </div>
-        <div class="test-card" data-float-speed="1.2" data-float-offset="2">
-          <div class="test-quote-mark">"</div>
-          <p>A rare developer who understands both technical and design. Conversion rates jumped 40%.</p>
-          <div class="test-author">
-            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face" alt="">
-            <div>
-              <strong>Sarah Chen</strong>
-              <span>Founder, Bloom Digital</span>
-            </div>
-          </div>
-        </div>
-        <div class="test-card" data-float-speed="0.6" data-float-offset="4">
-          <div class="test-quote-mark">"</div>
-          <p>Delivered our MVP in record time. The codebase is clean, documented, and a joy to maintain.</p>
-          <div class="test-author">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="">
-            <div>
-              <strong>Marcus Rodriguez</strong>
-              <span>PM, InnovateCo</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== SCENE 5: CONTACT — Final chapter ========== -->
-  <section class="scene scene-contact" id="scene5" data-scene="5">
-    <div class="scene-sticky">
-      <div class="contact-space">
-        <div class="chapter-number scene-chapter">
-          <span class="ch-num">05</span>
-          <span class="ch-line"></span>
-        </div>
-        <h2 class="contact-title">Let's write the<br><span class="text-glow">next chapter</span></h2>
-        <p class="contact-sub">Have a project? Let's talk.</p>
-        <div class="contact-links">
-          <a href="#" class="contact-link-big">
-            <span class="cl-label">Email</span>
-            <span class="cl-value">hello@devstory.dev</span>
-            <div class="cl-arrow">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-            </div>
-          </a>
-          <a href="#" class="contact-link-big">
-            <span class="cl-label">GitHub</span>
-            <span class="cl-value">github.com/devstory</span>
-            <div class="cl-arrow">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-            </div>
-          </a>
-          <a href="#" class="contact-link-big">
-            <span class="cl-label">LinkedIn</span>
-            <span class="cl-value">linkedin.com/in/devstory</span>
-            <div class="cl-arrow">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-            </div>
-          </a>
-        </div>
-        <div class="contact-footer">
-          <span>&lt;/DEV.STORY&gt;</span>
-          <span>2026</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Code Popup Modal -->
-  <div class="code-modal" id="codeModal">
-    <div class="code-modal-backdrop" id="codeModalBackdrop"></div>
-    <div class="code-modal-content">
-      <div class="code-modal-header">
-        <div class="code-modal-dots">
-          <span class="dot-red"></span>
-          <span class="dot-yellow"></span>
-          <span class="dot-green"></span>
-        </div>
-        <span class="code-modal-filename" id="codeModalFilename">app.tsx</span>
-        <button class="code-modal-close" id="codeModalClose" aria-label="Close">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-        </button>
-      </div>
-      <div class="code-modal-body">
-        <div class="code-lines" id="codeLines"></div>
-      </div>
-      <div class="code-modal-footer">
-        <p class="code-explanation" id="codeExplanation"></p>
-      </div>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+<!-- Sound Toggle -->
+<button aria-label="Toggle sound" class="sound-toggle" id="soundToggle">
+<svg class="sound-on" fill="none" height="24" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"></path></svg>
+<svg class="sound-off" fill="none" height="24" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" x2="17" y1="9" y2="15"></line><line x1="17" x2="23" y1="9" y2="15"></line></svg>
+</button>
+<!-- Scroll Progress -->
+<div class="progress-track">
+<div class="progress-fill" id="progressFill"></div>
+<div class="progress-chapters">
+<div class="progress-dot active" data-scene="0"></div>
+<div class="progress-dot" data-scene="1"></div>
+<div class="progress-dot" data-scene="2"></div>
+<div class="progress-dot" data-scene="3"></div>
+<div class="progress-dot" data-scene="4"></div>
+<div class="progress-dot" data-scene="5"></div>
+</div>
+</div>
+<!-- Canvas for 3D particles -->
+<canvas id="bgCanvas"></canvas>
+<!-- ========== SCENE 0: INTRO / LOADING ========== -->
+<section class="scene scene-intro" data-scene="0" id="scene0">
+<div class="intro-overlay" id="introOverlay">
+<div class="intro-content">
+<div class="intro-logo">
+<span class="intro-bracket">&lt;</span>
+<span class="intro-text">DEV</span>
+<span class="intro-dot">.</span>
+<span class="intro-text">STORY</span>
+<span class="intro-bracket">/&gt;</span>
+</div>
+<p class="intro-tagline">Abdulrhman Alboshra · AI &amp; Web Developer</p>
+<button class="intro-start" id="startBtn">
+<span>Enter Experience</span>
+<div class="intro-start-ring"></div>
+</button>
+<p class="intro-hint">Best with sound on</p>
+</div>
+</div>
+<!-- Hero parallax layers -->
+<div class="parallax-container" id="heroParallax">
+<div class="parallax-layer" data-rotate="0.02" data-speed="-0.3">
+<div class="floating-shape shape-1"></div>
+</div>
+<div class="parallax-layer" data-rotate="-0.015" data-speed="-0.2">
+<div class="floating-shape shape-2"></div>
+</div>
+<div class="parallax-layer" data-speed="-0.1">
+<div class="floating-shape shape-3"></div>
+</div>
+<div class="parallax-layer" data-speed="0.05">
+<div class="floating-shape shape-4"></div>
+</div>
+<div class="parallax-layer" data-rotate="0.01" data-speed="-0.15">
+<div class="floating-shape shape-5"></div>
+</div>
+<div class="parallax-layer hero-text-layer" data-speed="0">
+<div class="hero-content">
+<div class="hero-overline">
+<div class="typing-line" id="typingLine"></div>
+</div>
+<h1 class="hero-title">
+<span class="hero-word" data-parallax-x="0.05">I</span>
+<span class="hero-word" data-parallax-x="-0.03">Build</span>
+<br/>
+<span class="hero-word hero-gradient" data-parallax-x="0.04">Digital</span>
+<br/>
+<span class="hero-word hero-gradient" data-parallax-x="-0.06">Experiences</span>
+</h1>
+</div>
+</div>
+<div class="parallax-layer" data-speed="0.15">
+<div class="floating-shape shape-6"></div>
+</div>
+<div class="parallax-layer" data-speed="0.2">
+<div class="floating-code code-1">
+<pre>&lt;div class="magic"&gt;</pre>
+</div>
+</div>
+<div class="parallax-layer" data-speed="-0.25">
+<div class="floating-code code-2">
+<pre>const future = await build();</pre>
+</div>
+</div>
+<div class="parallax-layer" data-speed="0.1">
+<div class="floating-code code-3">
+<pre>transform: rotateY(45deg);</pre>
+</div>
+</div>
+</div>
+<div class="scroll-cue">
+<div class="scroll-cue-mouse">
+<div class="scroll-cue-wheel"></div>
+</div>
+<span>Scroll to explore</span>
+</div>
+</section>
+<!-- ========== SCENE 1: ABOUT — Horizontal reveal ========== -->
+<section class="scene scene-about" data-scene="1" id="scene1" style="height:500vh">
+<div class="scene-sticky">
+<div class="horizontal-track" id="aboutTrack">
+<!-- Panel 1: Chapter intro -->
+<div class="h-panel panel-chapter">
+<div class="chapter-number">
+<span class="ch-num">01</span>
+<span class="ch-line"></span>
+</div>
+<h2 class="chapter-title">The<br/><span class="text-glow">Story</span></h2>
+</div>
+<!-- Panel 2: Photo + intro text -->
+<div class="h-panel panel-about-intro">
+<div class="about-photo-3d">
+<div class="photo-frame" id="photoFrame">
+<img alt="Abdulrhman Alboshra monogram" class="about-photo" src="identity.svg"/>
+<div class="photo-glare"></div>
+</div>
+</div>
+<div class="about-intro-text">
+<p class="about-big-text">I’m Abdulrhman Alboshra, an AI and full-stack developer building practical AI applications and bilingual websites.</p>
+<p class="about-sub-text">Based in Sudan (UTC+2). Available for remote part-time and freelance work: 20–25 hours per week, across five days.</p>
+</div>
+</div>
+<!-- Panel 3: Journey timeline -->
+<div class="h-panel panel-timeline">
+<div class="timeline">
+<div class="timeline-item" data-year="2019">
+<div class="tl-year">2019</div>
+<div class="tl-content">
+<h4>Software Engineering Studies</h4>
+<p>BSc in Software Engineering at Sudan University of Science and Technology, 2019–present; degree in progress.</p>
+</div>
+</div>
+<div class="timeline-item" data-year="2022">
+<div class="tl-year">2022</div>
+<div class="tl-content">
+<h4>WeDo Technology</h4>
+<p>Full-Stack Developer and UI/UX Designer, 2022–2023. Responsive application features, user flows, and prototypes.</p>
+</div>
+</div>
+<div class="timeline-item" data-year="2024">
+<div class="tl-year">2024</div>
+<div class="tl-content">
+<h4>Solar Tech</h4>
+<p>AI Engineer, 2024–2025. Chatbots, AI agents, and business-process automation.</p>
+</div>
+</div>
+<div class="timeline-item" data-year="2025">
+<div class="tl-year">2025</div>
+<div class="tl-content">
+<h4>QuadAgents &amp; Wave Engineering</h4>
+<p>Co-Founder and AI Developer at QuadAgents, and AI Engineer at Wave Engineering, 2025–present.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Panel 5: Philosophy -->
+<div class="h-panel panel-philosophy">
+<div class="philosophy-content">
+<h3 class="philosophy-title">My <span class="text-glow">Philosophy</span></h3>
+<blockquote class="philosophy-quote">"Write code that humans can read, not just machines."</blockquote>
+<div class="philosophy-pillars">
+<div class="pillar">
+<div class="pillar-num">01</div>
+<h4>Clean Architecture</h4>
+<p>Maintainable, testable, and scalable systems that stand the test of time.</p>
+</div>
+<div class="pillar">
+<div class="pillar-num">02</div>
+<h4>User-First Design</h4>
+<p>Every interface should feel intuitive. If a user needs a manual, I've failed.</p>
+</div>
+<div class="pillar">
+<div class="pillar-num">03</div>
+<h4>Continuous Learning</h4>
+<p>The tech landscape evolves daily. Staying curious is not optional, it's essential.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Panel 6: Values -->
+<div class="h-panel panel-values">
+<div class="values-grid">
+<div class="value-card" data-sound="fast" data-tilt="">
+<div class="value-icon">
+<svg fill="none" height="40" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" width="40"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+</div>
+<h4>Fast</h4>
+<p>Responsive layouts and attention to performance</p>
+</div>
+<div class="value-card" data-sound="secure" data-tilt="">
+<div class="value-icon">
+<svg fill="none" height="40" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" width="40"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+</div>
+<h4>Secure</h4>
+<p>Security-first architecture, always</p>
+</div>
+<div class="value-card" data-sound="human" data-tilt="">
+<div class="value-icon">
+<svg fill="none" height="40" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" width="40"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"></path></svg>
+</div>
+<h4>Human</h4>
+<p>Interfaces that feel natural and delightful</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========== SCENE 2: SKILLS — 3D rotating cube faces ========== -->
+<section class="scene scene-skills" data-scene="2" id="scene2">
+<div class="scene-sticky">
+<div class="chapter-number scene-chapter">
+<span class="ch-num">02</span>
+<span class="ch-line"></span>
+</div>
+<h2 class="scene-title">The <span class="text-glow">Arsenal</span></h2>
+<div class="skills-orbit" id="skillsOrbit">
+<div class="orbit-center">
+<div class="orbit-core">
+<span class="orbit-label" id="orbitLabel">SKILLS</span>
+</div>
+</div>
+<div class="orbit-ring ring-1">
+<div class="orbit-item" data-skill="React" style="--angle: 0deg">
+<div class="orbit-node">
+<span>React</span>
+</div>
+</div>
+<div class="orbit-item" data-skill="Node.js" style="--angle: 60deg">
+<div class="orbit-node">
+<span>Node.js</span>
+</div>
+</div>
+<div class="orbit-item" data-skill="TypeScript" style="--angle: 120deg">
+<div class="orbit-node">
+<span>TypeScript</span>
+</div>
+</div>
+<div class="orbit-item" data-skill="Python" style="--angle: 180deg">
+<div class="orbit-node">
+<span>Python</span>
+</div>
+</div>
+<div class="orbit-item" data-skill="Next.js" style="--angle: 240deg">
+<div class="orbit-node">
+<span>Next.js</span>
+</div>
+</div>
+<div class="orbit-item" data-skill="Gemini" style="--angle: 300deg">
+<div class="orbit-node">
+<span>Gemini</span>
+</div>
+</div>
+</div>
+<div class="orbit-ring ring-2">
+<div class="orbit-item" data-skill="PostgreSQL" style="--angle: 30deg">
+<div class="orbit-node node-sm">
+<span>PostgreSQL</span>
+</div>
+</div>
+<div class="orbit-item" data-skill="Git" style="--angle: 90deg">
+<div class="orbit-node node-sm">
+<span>Git</span>
+</div>
+</div>
+<div class="orbit-item" data-skill="Supabase" style="--angle: 150deg">
+<div class="orbit-node node-sm">
+<span>Supabase</span>
+</div>
+</div>
+<div class="orbit-item" data-skill="OpenAI" style="--angle: 210deg">
+<div class="orbit-node node-sm">
+<span>OpenAI</span>
+</div>
+</div>
+<div class="orbit-item" data-skill="SQLite" style="--angle: 270deg">
+<div class="orbit-node node-sm">
+<span>SQLite</span>
+</div>
+</div>
+<div class="orbit-item" data-skill="Tailwind" style="--angle: 330deg">
+<div class="orbit-node node-sm">
+<span>Tailwind</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Skill detail panel -->
+<div class="skill-detail" id="skillDetail">
+<button aria-label="Close" class="skill-detail-close" id="skillDetailClose">
+<svg fill="none" height="24" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="24"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+</button>
+<div class="skill-detail-inner">
+<h3 class="skill-detail-name" id="skillDetailName">React</h3>
+<div class="skill-detail-bar" hidden=""><div class="skill-detail-fill" id="skillDetailFill"></div></div>
+<p class="skill-detail-desc" id="skillDetailDesc"></p>
+<div class="skill-detail-projects" id="skillDetailProjects"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========== SCENE 3: PROJECTS — Immersive cards ========== -->
+<section class="scene scene-projects" data-scene="3" id="scene3">
+<div class="scene-sticky">
+<div class="chapter-number scene-chapter">
+<span class="ch-num">03</span>
+<span class="ch-line"></span>
+</div>
+<h2 class="scene-title">The <span class="text-glow">Work</span></h2>
+<!-- Project Showcase - one at a time -->
+<div class="project-showcase" id="projectShowcase">
+<div class="project-counter">
+<span id="projectCurrent">01</span> / <span>03</span>
+</div>
+<div class="project-carousel">
+<div class="project-slide active" data-index="0">
+<div class="project-slide-image"><div class="project-cover">BOQ System</div></div>
+<div class="project-slide-info">
+<div class="project-slide-tags">
+<span>React</span><span>TypeScript</span><span>Gemini</span>
+</div>
+<h3>BOQ System</h3>
+<p>A private Arabic/English quantity-surveying application. Extracts draft bills of quantities from drawings, links quantities and specification clauses to source evidence, and supports editing and engineer approval before export.</p>
+<div class="project-slide-meta">
+<div class="meta-item">Role: Developer</div>
+<div class="meta-item">Status: Private application</div>
+<div class="meta-item">Focus: Engineer review required</div>
+</div>
+<div class="project-slide-actions"><a class="btn-project" href="mailto:abdulrhmantopg@gmail.com">Ask about this project</a></div>
+</div>
+</div>
+<div class="project-slide" data-index="1">
+<div class="project-slide-image"><div class="project-cover">Dof3a</div></div>
+<div class="project-slide-info">
+<div class="project-slide-tags">
+<span>Next.js</span><span>Supabase</span><span>AI</span>
+</div>
+<h3>Dof3a</h3>
+<p>An Arabic learning platform for the Sudanese curriculum with AI explanations, practice exams, summaries, and student account flows.</p>
+<div class="project-slide-meta">
+<div class="meta-item">Role: Developer</div>
+<div class="meta-item">Status: Public website</div>
+<div class="meta-item">Focus: Arabic education</div>
+</div>
+<div class="project-slide-actions"><a class="btn-project" href="https://dof3a.vercel.app/">View website</a></div>
+</div>
+</div>
+<div class="project-slide" data-index="2">
+<div class="project-slide-image"><div class="project-cover">Lulu English</div></div>
+<div class="project-slide-info">
+<div class="project-slide-tags">
+<span>HTML</span><span>CSS</span><span>JavaScript</span>
+</div>
+<h3>Lulu English</h3>
+<p>A bilingual learning website with guided lessons, interactive exercises, audio playback, and locally saved progress across six grade paths.</p>
+<div class="project-slide-meta">
+<div class="meta-item">Role: Developer</div>
+<div class="meta-item">Status: Public website</div>
+<div class="meta-item">Focus: Bilingual learning</div>
+</div>
+<div class="project-slide-actions"><a class="btn-project" href="https://lulu-english.vercel.app/">View website</a></div>
+</div>
+</div>
+</div>
+<div class="project-nav">
+<button aria-label="Previous" class="project-nav-btn" id="projPrev">
+<svg fill="none" height="24" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="24"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
+</button>
+<div class="project-dots" id="projectDots">
+<span class="proj-dot active"></span>
+<span class="proj-dot"></span>
+<span class="proj-dot"></span>
+</div>
+<button aria-label="Next" class="project-nav-btn" id="projNext">
+<svg fill="none" height="24" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- ========== SCENE 4: TESTIMONIALS — Floating cards ========== -->
+<section class="scene scene-testimonials" data-scene="4" id="scene4">
+<div class="scene-sticky">
+<div class="chapter-number scene-chapter">
+<span class="ch-num">04</span>
+<span class="ch-line"></span>
+</div>
+<h2 class="scene-title">How I Can Help</h2>
+<div class="testimonials-float" id="testimonialsFloat">
+<div class="test-card" data-float-offset="0" data-float-speed="0.8">
+<div class="test-quote-mark">+</div>
+<p>Chatbots, AI agents, retrieval workflows, and document extraction with human review.</p>
+<div class="test-author"><strong>AI Applications</strong></div>
+</div>
+<div class="test-card" data-float-offset="2" data-float-speed="1.2">
+<div class="test-quote-mark">+</div>
+<p>Arabic and English landing pages, responsive interfaces, and clear user journeys.</p>
+<div class="test-author"><strong>Bilingual Websites</strong></div>
+</div>
+<div class="test-card" data-float-offset="4" data-float-speed="0.6">
+<div class="test-quote-mark">+</div>
+<p>Remote collaboration from Sudan, 20–25 hours per week across five days.</p>
+<div class="test-author"><strong>Part-Time Collaboration</strong></div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========== SCENE 5: CONTACT — Final chapter ========== -->
+<section class="scene scene-contact" data-scene="5" id="scene5">
+<div class="scene-sticky">
+<div class="contact-space">
+<div class="chapter-number scene-chapter">
+<span class="ch-num">05</span>
+<span class="ch-line"></span>
+</div>
+<h2 class="contact-title">Let's write the<br/><span class="text-glow">next chapter</span></h2>
+<p class="contact-sub">Available for remote AI development and Arabic/English websites.</p>
+<div class="contact-links">
+<a class="contact-link-big" href="mailto:abdulrhmantopg@gmail.com">
+<span class="cl-label">Email</span>
+<span class="cl-value">abdulrhmantopg@gmail.com</span>
+<div class="cl-arrow">
+<svg fill="none" height="24" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="24"><path d="M7 17L17 7M17 7H7M17 7v10"></path></svg>
+</div>
+</a>
+<a class="contact-link-big" href="https://github.com/TurkeyAbdo">
+<span class="cl-label">GitHub</span>
+<span class="cl-value">github.com/TurkeyAbdo</span>
+<div class="cl-arrow">
+<svg fill="none" height="24" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="24"><path d="M7 17L17 7M17 7H7M17 7v10"></path></svg>
+</div>
+</a>
+<a class="contact-link-big" href="https://www.linkedin.com/in/abdulrhman-alboshra-a8b850367/">
+<span class="cl-label">LinkedIn</span>
+<span class="cl-value">Abdulrhman Alboshra on LinkedIn</span>
+<div class="cl-arrow">
+<svg fill="none" height="24" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="24"><path d="M7 17L17 7M17 7H7M17 7v10"></path></svg>
+</div>
+</a>
+</div>
+<div class="contact-footer">
+<span>&lt;/DEV.STORY&gt;</span>
+<span>2026</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Code Popup Modal -->
+<div class="code-modal" id="codeModal">
+<div class="code-modal-backdrop" id="codeModalBackdrop"></div>
+<div class="code-modal-content">
+<div class="code-modal-header">
+<div class="code-modal-dots">
+<span class="dot-red"></span>
+<span class="dot-yellow"></span>
+<span class="dot-green"></span>
+</div>
+<span class="code-modal-filename" id="codeModalFilename">app.tsx</span>
+<button aria-label="Close" class="code-modal-close" id="codeModalClose">
+<svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+</button>
+</div>
+<div class="code-modal-body">
+<div class="code-lines" id="codeLines"></div>
+</div>
+<div class="code-modal-footer">
+<p class="code-explanation" id="codeExplanation"></p>
+</div>
+</div>
+</div>
+<script src="script.js"></script>
 </body>
 </html>

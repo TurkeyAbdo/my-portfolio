@@ -1620,3 +1620,6 @@ body.locked {
     transition-duration: 0.01ms !important;
   }
 }
+
+.project-cover { display:flex; align-items:center; justify-content:center; min-height:260px; height:100%; background:linear-gradient(135deg,#111827,#282056); color:#fff; font-size:clamp(2rem,6vw,4rem); font-weight:800; padding:1rem; text-align:center; }
+.contact-link-big .cl-value { overflow-wrap:anywhere; }

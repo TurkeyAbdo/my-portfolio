@@ -534,20 +534,7 @@
   });
 
   // --- Skill Detail Data ---
-  const skillData = {
-    'React': { level: 95, desc: 'Building complex SPAs, custom hooks, state management with Redux/Zustand, server components, and performance optimization.', projects: ['Analytics Dashboard', 'E-Commerce', 'SaaS Platform'] },
-    'Node.js': { level: 90, desc: 'REST & GraphQL APIs, real-time apps with Socket.io, microservices, and serverless functions.', projects: ['API Gateway', 'Chat App', 'Analytics'] },
-    'TypeScript': { level: 92, desc: 'End-to-end type safety, generic utilities, advanced mapped types, and declaration files.', projects: ['All Projects', 'Open Source Libs'] },
-    'Python': { level: 88, desc: 'FastAPI, Django, data processing pipelines, ML model serving, and automation scripts.', projects: ['AI Generator', 'Data Pipeline', 'ML APIs'] },
-    'Next.js': { level: 93, desc: 'SSR/SSG/ISR, App Router, middleware, edge functions, and full-stack applications.', projects: ['E-Commerce', 'SaaS Dashboard', 'Blog'] },
-    'Go': { level: 75, desc: 'High-performance microservices, concurrent systems, CLI tools, and gRPC services.', projects: ['API Gateway', 'CLI Tools'] },
-    'PostgreSQL': { level: 85, desc: 'Complex queries, indexing strategies, migrations with Prisma/Drizzle, and performance tuning.', projects: ['E-Commerce', 'Analytics', 'SaaS'] },
-    'Docker': { level: 82, desc: 'Multi-stage builds, docker-compose, CI/CD integration, and production deployments.', projects: ['All Production Apps'] },
-    'AWS': { level: 80, desc: 'Lambda, S3, EC2, RDS, CloudFront, and infrastructure-as-code with CDK/Terraform.', projects: ['SaaS Platform', 'Data Pipeline'] },
-    'GraphQL': { level: 85, desc: 'Schema design, resolvers, subscriptions, Apollo Server/Client, and code generation.', projects: ['Analytics Dashboard', 'SaaS'] },
-    'Redis': { level: 78, desc: 'Caching strategies, pub/sub, rate limiting, session storage, and real-time leaderboards.', projects: ['Chat App', 'E-Commerce'] },
-    'Tailwind': { level: 95, desc: 'Custom design systems, responsive layouts, dark mode, animations, and component libraries.', projects: ['All Frontend Projects'] },
-  };
+  const skillData = {"React": {"level": 0, "desc": "Application interfaces and reusable components.", "projects": []}, "Node.js": {"level": 0, "desc": "JavaScript server-side application development.", "projects": []}, "TypeScript": {"level": 0, "desc": "Typed application logic and interfaces.", "projects": []}, "Python": {"level": 0, "desc": "AI application development and automation.", "projects": []}, "Next.js": {"level": 0, "desc": "Full-stack web applications and bilingual websites.", "projects": []}, "Gemini": {"level": 0, "desc": "Document extraction and AI-assisted workflows in BOQ.", "projects": []}, "PostgreSQL": {"level": 0, "desc": "Relational application data.", "projects": []}, "Git": {"level": 0, "desc": "Version control and collaboration.", "projects": []}, "Supabase": {"level": 0, "desc": "Application data and account workflows in Dof3a.", "projects": []}, "OpenAI": {"level": 0, "desc": "LLM application integrations.", "projects": []}, "SQLite": {"level": 0, "desc": "Local persistence in the BOQ application.", "projects": []}, "Tailwind": {"level": 0, "desc": "Responsive interface styling.", "projects": []}};
 
   const skillDetail = document.getElementById('skillDetail');
   const skillDetailClose = document.getElementById('skillDetailClose');
